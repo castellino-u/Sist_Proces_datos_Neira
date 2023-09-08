@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+</head>
+<body>
+    
+    <h1>Formulario</h1>
+    <form id="miFormulario">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre"> <br>
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido"> <br>
+
+        <label for="DNI">DNI:</label>
+        <input type="number" id="DNI"> <br>
+
+        <label for="nacimiento">Fecha de nacimiento:</label>
+        <input type="date" id="nacimiento"> <br>
+
+        <label for="domicilio">Domicilio:</label>
+        <input type="text" id="domicilio"> <br>
+
+        <label for="localidad">Localidad:</label>
+        <input type="text" id="localidad"> <br>
+
+        <br>
+        
+        <h2>Idiomas que conoce</h2>
+        <input type="checkbox" name="casilla1" id="ingles"> Ingles 
+        <input type="range" name="" id="rango_ingles" min="0" max="100" step="50"> <br>
+        <input type="checkbox" name="casilla1" id="frances"> Francés
+        <input type="range" name="" id="rango_frances" min="0" max="100" step="50"> <br>
+        <input type="checkbox" name="casilla1" id="espanol"> Español 
+        <input type="range" name="" id="rango_espanol" min="0" max="100" step="50"> <br>
+        <input type="checkbox" name="casilla1" id="chino"> Chino
+        <input type="range" name="" id="rango_chino" min="0" max="100" step="50"> <br>
+        <br><br>
+        <button>Enviar</button>
+        <button type="reset" id="reset_button">Reiniciar</button>
+
+        <div id="resultado"></div>
+
+        
+
+    </form>
+
+    <script>
+        document.getElementById('miFormulario').addEventListener('submit', function(event) {
+            event.preventDefault();
+            let nombre = document.getElementById('nombre').value;
+            let apellido = document.getElementById('apellido').value;
+            let nacimiento = document.getElementById('nacimiento').value;
+            let domicilio = document.getElementById('domicilio').value;
+            let localidad = document.getElementById('localidad').value;
+
+            let idioma_ing = document.getElementById('ingles').checked;
+            let idioma_fr = document.getElementById('frances').checked;
+            let idioma_esp = document.getElementById('espanol').checked;
+            let idioma_ch = document.getElementById('chino').checked;
+
+            let mensaje = ` Nombre: ${nombre} <br> 
+                            Apellido: ${apellido} <br>
+                            Nacimiento: ${nacimiento} <br>
+                            Domicilio: ${domicilio} <br>
+                            Localidad: ${localidad} <br>
+                            Ingles: ${idioma_ing ? " Si" : " No "} <br>
+                            Francés: ${idioma_fr ? " Si ": " No "} <br>
+                            Español: ${idioma_esp ? " Si " : " No "} <br>
+                            Chino: ${idioma_ch ? " Si " : " No "} <br>`;
+
+            let resultado = document.getElementById('resultado');
+            resultado.innerHTML = mensaje; 
+            
+        });
+        const button = document.getElementById('reset_button')
+        button.addEventListener('click', () => {
+            resultado.innerHTML= ''
+        })
+
+    </script>
+</body>
+</html>
